@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Site Launcher</title>
+        <style>
+            .hidden {
+                display:none
+            }
+            html {
+                width: 100%;
+                height: 100%;
+                display: flex;
+            }
+            body {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body>* {
+                height: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <img id="button" class="hidden" src="button.png">
+        <video id="video" class="hidden">
+            <source src="countdown.webm" type="video/webm">
+        </video>
+        <script>
+            var urlQueryParts = window.location.search.split('t=');
+            if (urlQueryParts.length !== 2) {
+                var url = window.prompt("URL to forward to:");
+                window.location.href = window.location.origin + '?t=' + url;
+            }
+            const forwardUrl = urlQueryParts[1];
+
+            var videoElm = document.getElementById('video');
+            var buttonElm = document.getElementById('button');
+
+            buttonElm.classList.toggle('hidden', false);
+
+            function start() {
+                videoElm.classList.toggle('hidden', false);
+                buttonElm.classList.toggle('hidden', true);
+                document.getElementById('video').play();
+            }
+
+            function redirect() {
+                window.location.href = forwardUrl;
+            }
+
+            videoElm.onended = redirect;
+            buttonElm.onclick = start;
+        </script>
+    </body>
+</html>
