@@ -4,7 +4,7 @@
         <title>Site Launcher</title>
         <style>
             .hidden {
-                display:none
+                display: none !important;
             }
             html {
                 width: 100%;
@@ -18,12 +18,29 @@
                 justify-content: center;
             }
             body>* {
-                height: 50%;
+                height: 75%;
+                max-width: 75%;
+                min-width: 50%;
+            }
+            #button {
+                background:url('button.png');
+                background-size: 100% 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #button-text {
+                font-size: 8vh;
+                font-family: sans, sans-serif;
+                margin-bottom: 12vh;
+                color: white;
             }
         </style>
     </head>
     <body>
-        <img id="button" class="hidden" src="button.png">
+        <div id="button" class="hidden">
+            <div id="button-text">LAUNCH</div>
+        </div>
         <video id="video" class="hidden">
             <source src="countdown.webm" type="video/webm">
         </video>
