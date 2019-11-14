@@ -31,7 +31,7 @@
             var urlQueryParts = window.location.search.split('t=');
             if (urlQueryParts.length !== 2) {
                 var url = window.prompt("URL to forward to:");
-                window.location.href = window.location.origin + '?t=' + url;
+                window.location.href = window.location.origin + window.location.pathname + '?t=' + url;
             }
             const forwardUrl = urlQueryParts[1];
 
